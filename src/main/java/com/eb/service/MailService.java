@@ -4,9 +4,12 @@ import com.eb.domain.Message;
 import com.eb.repostitory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")   //singleton or prototype
 public class MailService
 {
     /*
@@ -37,6 +40,9 @@ public class MailService
     }
 
      */
+
+    @Value("${app.email}")
+    private String email;
 
     public void sendMessage(Message message)
     {

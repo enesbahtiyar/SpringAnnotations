@@ -18,8 +18,18 @@ public class MyApplication
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
 
         MailService mailService = context.getBean(MailService.class);
+        MailService mailService1 = context.getBean(MailService.class);
 
         mailService.sendMessage(message);
+
+        if(mailService == mailService1)
+        {
+            System.out.println("same");
+        }
+        else
+        {
+            System.out.println("different");
+        }
 
         context.close(); //destroy the beans that stored inside the beans
     }
