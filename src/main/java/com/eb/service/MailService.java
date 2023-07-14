@@ -1,16 +1,15 @@
 package com.eb.service;
 
 import com.eb.domain.Message;
-import com.eb.repostitory.Repository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Map;
+
+@Component("mailService")
 @Scope("prototype")   //singleton or prototype
-public class MailService
+public class MailService implements MessageService
 {
     /*
     //Field Injection
@@ -44,6 +43,7 @@ public class MailService
     @Value("${app.email}")
     private String email;
 
+    @Override
     public void sendMessage(Message message)
     {
         System.out.println("this is the mail service. you got a new message: " + message.getMessage());
